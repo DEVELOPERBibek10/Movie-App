@@ -24,6 +24,12 @@ function App() {
 
   useEffect(() => {
     fetchTrendingMovies();
+
+    const interval = setInterval(() => {
+      fetchTrendingMovies();
+    }, 5 * 60 * 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -60,7 +66,7 @@ function App() {
             )
           )}
           <section className="all-movies">
-            <h2 className="mt-[20px]">All Movies</h2>
+            <h2 className="mt-[40px]">All Movies</h2>
 
             {isLoading ? (
               <div className="w-[80vw] flex justify-center items-center">

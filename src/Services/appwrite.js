@@ -1,4 +1,5 @@
 import { Client, Databases, ID, Query } from "appwrite";
+
 const PROJECT_ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT;
 const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
@@ -13,7 +14,7 @@ const database = new Databases(client);
 export async function updataSearchCount(searchTerm, movie) {
   try {
     const res = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
-      Query.equal("searchTerm", searchTerm),
+      Query.equal("movieId", movie.id),
     ]);
     if (res.documents.length > 0) {
       const document = res.documents[0];

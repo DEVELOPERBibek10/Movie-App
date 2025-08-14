@@ -22,6 +22,7 @@ export function useTrendingMovies() {
 
   return {
     fetchTrendingMovies,
+
     trendingMovies,
     trendingLoading,
     trendingError,
